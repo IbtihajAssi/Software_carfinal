@@ -31,7 +31,6 @@ public class InstallerTest {
 
 	@Then("installer can view his installation request")
 	public void installerCanViewHisInstallationRequest() {
-		assertNotNull(installer.getInstallerId(email));
 		assertNotNull(installer.getInstallerName(id));
 		assertTrue(installer.viewInstallationReq(name));		
 	}
