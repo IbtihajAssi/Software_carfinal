@@ -15,7 +15,6 @@
 
     <sonar.coverage.exclusions>**/Main.java</sonar.coverage.exclusions>
 	  <sonar.coverage.exclusions>**/Customer.java</sonar.coverage.exclusions>
-    <sonar.coverage.exclusions>**/Installer.java</sonar.coverage.exclusions>
     <sonar.coverage.exclusions>**/Product.java</sonar.coverage.exclusions>
 
 </properties>
