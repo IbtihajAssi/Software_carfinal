@@ -118,7 +118,6 @@ private static final String ERROR_PREFIX = "An error occurred: ";
 				    price = rs.getInt(4);
 				    stars = rs.getInt(7);
 
-LOGGER.info(String.format("%d\t%s\t%s\t%d$\t%s\t%d Stars", id, name, description, price, vailability, stars));
 				} else {
 				    LOGGER.warning("Result set is null. Unable to log information.");
 				}		}
