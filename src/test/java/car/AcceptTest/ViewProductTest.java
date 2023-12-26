@@ -1,52 +1,31 @@
 package car.AcceptTest;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import car.Customer;
 import car.Product;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class customerSearch {
-Product product;
-List<Product>p=new ArrayList<>();
-	@Given("customer login")
-	public void customerLogin() {
-		product=new Product();
+public class ViewProductTest {
+	Product product;
+	List<Product>p=new ArrayList<>();
+	@Given("user login")
+	public void userLogin() {
+		product=new Product(); 
 	}
 
-	@When("customer  search about product with name {string}")
-	public void customerSearchAboutProductWithName(String name) {
-		p=product.searchByName(name);
-	    
+	@When("{string} want to view product with category <category>")
+	public void wantToViewProductWithCategoryCategory(String category) {
+	    p=product.viewProduct(category);
 	}
 
-	@Then("product will display")
-	public void productWillDisplay() {
-	   assertNotNull(p); 
+	@Then("products will displays")
+	public void productsWillDisplays() {
+	    assertNotNull(p);
 	}
 
-	@Then("no product found message will display")
-	public void noProductFoundMessageWillDisplay() {
-
-		assertNull(p);
-	}
-
-	@When("customer  search about product with price {string}")
-	public void customerSearchAboutProductWithPrice(String price) {
-		p=product.searchByPrice(Integer.parseInt(price));
-	    
-	}
-
-	@When("customer  search about product with category {string}")
-	public void customerSearchAboutProductWithCategory(String category) {
-		p=product.searchByCategory(category);
-	    
-	}
 }
