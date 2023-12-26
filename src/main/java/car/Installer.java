@@ -28,8 +28,8 @@ public class Installer {
     private static final String CUSTOMER_PHONE_COLUMN = "customerphone";
     private static final String STREET_COLUMN = "street";
     private static final String ERROR_PREFIX = "An error occurred: ";
+    private static final String PHONE_NUM_COLUMN = "phone_num";
 
-    private static final Scanner SCANNER = new Scanner(System.in);
 	public Installer() {
 	
 	}
@@ -115,7 +115,7 @@ public class Installer {
 	}
 	
 public void viewInstaller() {
-		
+		 
 		try {
 			connection();
 			String sql="Select * from installer";
@@ -147,7 +147,7 @@ public void viewInstaller() {
 				int id = rs.getInt("id");
 				String firstName = (rs.getString(FIRST_NAME_COLUMN) != null) ? rs.getString(FIRST_NAME_COLUMN) : "";
 				String lastName = (rs.getString(LAST_NAME_COLUMN) != null) ? rs.getString(LAST_NAME_COLUMN) : "";
-				String phoneNumber = (rs.getString("phone_num") != null) ? rs.getString("phone_num") : "";
+				String phoneNumber = (rs.getString(PHONE_NUM_COLUMN) != null) ? rs.getString(PHONE_NUM_COLUMN) : "";
 
 				LOGGER.info(String.format("id=%d %s %s Phone Number is:%s%nAvailable ON:%s",
 				    id,
@@ -261,7 +261,7 @@ public boolean viewInstallationReq(String name) {
 			    LOGGER.info(String.format("id= %d\t%s\t%s\t%s\t%s\t%s\t%s\t%s", idd, cname, req, carmodel, day, phonee, citty, strreet));
 			} else {
 			    LOGGER.warning("Some values are null. Unable to log information.");
-			}
+			} 
 			}
 			else {
 				flag=true;
@@ -390,7 +390,8 @@ public boolean veiwInstallationRequestAdmin() {
 			    String installername = rs.getString("installer_name");
 			    if (cnname != null && req != null && carmodel != null && day != null && phonee != null && city1 != null && street1 != null && installername != null) {
 			        LOGGER.info(String.format("id= %s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s", idd, installername, cnname, req, carmodel, day, phonee, city1, street1));
-			    } else {
+			    }
+				else {
 			        LOGGER.warning("Some values are null. Unable to log information.");
 			    }
 			} 
@@ -419,7 +420,7 @@ public boolean viewInstallerAdmin() {
 		   while (rs.next()) {
 			   if(!getTest()) {
 			   Integer id=rs.getInt("id");
-			   LOGGER.info(String.format("%s\t%s\t%s\t%s", id, rs.getString(FIRST_NAME_COLUMN), rs.getString(LAST_NAME_COLUMN), rs.getString("phone_num")));
+			   LOGGER.info(String.format("%s\t%s\t%s\t%s", id, rs.getString(FIRST_NAME_COLUMN), rs.getString(LAST_NAME_COLUMN), rs.getString(PHONE_NUM_COLUMN)));
 		   }
 			   else {
 				   flag=true;
@@ -464,14 +465,14 @@ public boolean customerViewInstallation(String name) {
 		
 		while (rs.next()) {
 			if(!getTest()) {
-		int idd=rs.getInt("id");
-		String cname=rs.getString(CUSTOMER_NAME_COLUMN);
-		String req=rs.getString(CUSTOMER_REQ_COLUMN);
-		String carmodel=rs.getString(CAR_MODEL_COLUMN);
-		String day=rs.getString("day");
-		String phonee=rs.getString(CUSTOMER_PHONE_COLUMN);
-		String installername=rs.getString("installer_name");
-		LOGGER.info(String.format("id= %d\t%s\t%s\t%s\t%s\t%s\t%s", idd, cname, req, carmodel, day, installername, phonee));
+//		int idd=rs.getInt("id");
+//		String cname=rs.getString(CUSTOMER_NAME_COLUMN);
+//		String req=rs.getString(CUSTOMER_REQ_COLUMN);
+//		String carmodel=rs.getString(CAR_MODEL_COLUMN);
+//		String day=rs.getString("day");
+//		String phonee=rs.getString(CUSTOMER_PHONE_COLUMN);
+//		String installername=rs.getString("installer_name");
+//		LOGGER.info(String.format("id= %d\t%s\t%s\t%s\t%s\t%s\t%s", idd, cname, req, carmodel, day, installername, phonee));
 	}
 			else {
 				flag=true;
