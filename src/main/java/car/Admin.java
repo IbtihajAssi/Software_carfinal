@@ -13,11 +13,7 @@ public class Admin {
 	ResultSet rs=null;
     public static final Logger LOGGER = Logger.getLogger(Admin.class.getName());
     public static final Scanner SCANN = new Scanner(System.in);
-    private static final String ENTER_CATEGORY_MESSAGE = "Enter name of category";
-    private static final String TAB_SPACING = "\t\t\t";
     private static final String ERROR_PREFIX = "An error occurred: ";
-
-    private  String scan ;
     private static Boolean checkprod = false;
     private static Boolean flaginsertP=false;
 	private static Boolean flagdeleteP=false;
@@ -25,10 +21,7 @@ public class Admin {
 
 	private static Boolean flaginsertC=false;
 	private static Boolean flagdeleteC=false;
-
-	private Product product=new Product();
-	private Installer installer;
-	private Order order=new Order();
+	
        public Admin() {
            // No actions are performed.
   
