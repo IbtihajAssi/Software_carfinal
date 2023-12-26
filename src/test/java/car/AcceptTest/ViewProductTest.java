@@ -3,6 +3,7 @@ package car.AcceptTest;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import car.Product;
 import io.cucumber.java.en.Given;
@@ -11,7 +12,7 @@ import io.cucumber.java.en.When;
 
 public class ViewProductTest {
 	Product product;
-	ArrayList<Product>p=new ArrayList<>();
+	List<Product>p=new ArrayList<>();
 	@Given("user login")
 	public void userLogin() {
 		product=new Product(); 
