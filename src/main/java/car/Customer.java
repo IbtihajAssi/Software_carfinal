@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 public class Customer {
 	   public static final Logger LOGGER = Logger.getLogger(Customer.class.getName());
 	    public static final Scanner SCANN = new Scanner(System.in);
-	private  String scanN;
 	Connection con=null;
 	PreparedStatement stm=null;
 	ResultSet rs=null;
@@ -19,9 +18,7 @@ public class Customer {
 	private static boolean finsertorder=false;
 	private static boolean flagSearch=false;
 private static boolean flagdeleteO=false;
-private Product product=new Product();
-private Order order=new Order();
-private Installer installer=new Installer();
+
 private String customername;
 private String phone;
 private String city;
@@ -34,9 +31,7 @@ private static final String SELECT_PRODUCT_BY_ID_QUERY = "Select * from product 
 private static final String QUANTITY_LITERAL = "quantity";
 private static final String ERROR_PREFIX = "An error occurred: ";
 
-	public Customer() {
-
-	}
+	
 	public void setName( String customername) {
 		this.customername=customername;
 	}
@@ -85,7 +80,7 @@ private static final String ERROR_PREFIX = "An error occurred: ";
 
 	public void viewCategoryProduct(String category) {
 
-		try {
+		try { 
 			LOGGER.info("please choose the number of product you want.");
 			connection();
 			String sql="Select * from product where category='" +category+"' ";
@@ -164,7 +159,7 @@ if(!getTest()) {
 		    	stm.setString(2,this.getphone());
 		    	stm.setString(3,request);
 		    	stm.setString(4,carmodel);
-		    	stm.setString(5,this.getcity());
+		    	stm.setString(5,this.getcity()); 
 		    	stm.setString(6,this.getstreet());
 		    	stm.setString(7,day);
 		    	stm.setString(8,installerNamme);
