@@ -20,10 +20,11 @@ private Order order=new Order();
 private Customer customer=new Customer();
 
 public static final String ADMIN_ROLE = "admin";
-private static final String INSTALLER = "installer";
+private static final String INSTALLERR = "installer";
 private static final String ERROR_PREFIX = "An error occurred: ";
 private static final String ENTER_CATEGORY_MESSAGE = "Enter name of category";
 private static final String TAB_SPACING = "\t\t\t";
+private static final String SYNTAX_ERROR_EMAIL = "syntax error in email";
 
 private static Connection con=null;
 private static PreparedStatement stm=null;
@@ -49,7 +50,7 @@ private static ResultSet rs=null;
 			}
 
 			else if(scan.equalsIgnoreCase("3")){
-				start(INSTALLER);
+				start(INSTALLERR);
 			}
 			else if(scan.equalsIgnoreCase("4")){
 				LOGGER.info("you log out succesfully");
@@ -64,14 +65,14 @@ private static ResultSet rs=null;
 	}
 	public void start(String usertype) {
 		if(!loggin.getFlaglogin()) {
-			if(!usertype.equalsIgnoreCase(ADMIN_ROLE)&&!usertype.equalsIgnoreCase(INSTALLER)){
+			if(!usertype.equalsIgnoreCase(ADMIN_ROLE)&&!usertype.equalsIgnoreCase(INSTALLERR)){
 				LOGGER.info("1- sign up");
 		 	}
 			LOGGER.info("2- login");
 			LOGGER.info("3- go back");
 			scan=SCANN.nextLine();
 		}
-		if(scan.equalsIgnoreCase("1")&&!usertype.equalsIgnoreCase(ADMIN_ROLE)&&!usertype.equalsIgnoreCase(INSTALLER)) {
+		if(scan.equalsIgnoreCase("1")&&!usertype.equalsIgnoreCase(ADMIN_ROLE)&&!usertype.equalsIgnoreCase(INSTALLERR)) {
 			signup(usertype);
 		}
 		else if(scan.equalsIgnoreCase("2")) {
@@ -109,7 +110,7 @@ private static ResultSet rs=null;
 	public void logIn(String usertype,String email,String password) {
 
 		if(!email.contains("@")||!email.contains(".")) {
-			LOGGER.info("syntex error in email");
+			LOGGER.info(SYNTAX_ERROR_EMAIL);
 			loggin.setFlaglogin(true);
 			start(usertype);
 		}
@@ -149,7 +150,7 @@ private static ResultSet rs=null;
 public void regesterUser(String email,String username,String password,String confirmPassword,String usertype) {
 		
 		if(!email.contains("@")||!email.contains(".")) {
-			LOGGER.info("syntex error in email");
+			LOGGER.info(SYNTAX_ERROR_EMAIL);
 			signup(usertype);
 		}
 		else {
@@ -216,7 +217,7 @@ stm.close();
 }
 
 
-private void printProduct(ArrayList<Product> prod) {
+private void printProduct(List<Product> prod) {
 	for(int i=0;i<prod.size();i++) {
 		LOGGER.info("id="+prod.get(i).getId()+"\t"+prod.get(i).getName()+"\t"+prod.get(i).getDescription()+"\t"+prod.get(i).getPrice()+"$"+"\t"+prod.get(i).getQuientity());
 			}
@@ -258,7 +259,7 @@ public void updateProduct() {
 	   
 	   LOGGER.info("Please enter the name of category you want to update ");
 	   String category=SCANN.nextLine();
-	   ArrayList<Product>prod;
+	   List<Product>prod;
     
     prod= product.viewProduct(category);
     printProduct(prod);
@@ -312,7 +313,7 @@ public void deleteProduct() {
 	   LOGGER.info("Please enter the name of category you want to delete ");
 	   String category=SCANN.nextLine();
 
-ArrayList<Product>prod;
+List<Product>prod;
     
     prod= product.viewProduct(category);
     printProduct(prod);
@@ -346,7 +347,7 @@ public void addInstaller() {
 	
 	
 	if(!email.contains("@")||!email.contains(".")) {
-		LOGGER.info("syntex error in email");
+		LOGGER.info(SYNTAX_ERROR_EMAIL);
 		addInstaller();
 	}
 	else {
@@ -462,7 +463,7 @@ public void adminDashboard() {
     break;
 	   case "4":  LOGGER.info(ENTER_CATEGORY_MESSAGE);
 	              String cat=SCANN.nextLine();
-	              ArrayList<Product>prod;
+	              List<Product>prod;
 	             
 	              prod= product.viewProduct(cat);
 		printProduct(prod);
@@ -609,7 +610,7 @@ public void search(String user) {
 	LOGGER.info("2.Search by price.");
 	LOGGER.info("3.Search by category.");
 	scan=SCANN.nextLine();
-	ArrayList<Product>prod=new ArrayList<>();
+	List<Product>prod=new ArrayList<>();
 
 	if(scan.equalsIgnoreCase("1")) {
 		LOGGER.info("enter name");
@@ -766,9 +767,9 @@ public void customerDashboard(String user) {
 		}
 
 		else if(input.equalsIgnoreCase("2")){
-			LOGGER.info("Enter name of category");
+			LOGGER.info(ENTER_CATEGORY_MESSAGE);
               String category=SCANN.nextLine();
-              ArrayList<Product>prod;
+              List<Product>prod;
 	             
               prod= product.viewProduct(category);
               String vailability;
@@ -784,7 +785,6 @@ public void customerDashboard(String user) {
 	        		    String productName = prod.get(i).getName();
 	        		    String productDescription = prod.get(i).getDescription();
 	        		    int productPrice = prod.get(i).getPrice();
-	        		    String availability = ""; 
 	        		    int oldEval = customer.oldEvalProduct(productId);
 
 	        		    LOGGER.info(String.format("id=%d\t%s\t%s\t%d$\t%s\t%d star",
@@ -792,7 +792,7 @@ public void customerDashboard(String user) {
 	        		        (productName != null) ? productName : "",
 	        		        (productDescription != null) ? productDescription : "",
 	        		        productPrice,
-	        		        availability,
+	        		        vailability,
 	        		        oldEval
 	        		    ));
 	        		} else {
@@ -836,7 +836,7 @@ public void customerDashboard(String user) {
 public void installerDashboard(String email) {
 	int x=0;
 	while(x!=1) {
-		LOGGER.info("Welcome, INSTALLER!");
+		LOGGER.info("Welcome, INSTALLERR!");
 		LOGGER.info("Please choose you want need.");
 		LOGGER.info("1.View Instllation request.");
 		LOGGER.info("2.Done Instllation request.");
