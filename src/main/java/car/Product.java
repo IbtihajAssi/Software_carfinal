@@ -274,8 +274,8 @@ public class Product {
 		   		}
 		}
 
-		public ArrayList<Product> searchByName(String name) {
-		ArrayList<Product>product=new ArrayList<>();
+		public List<Product> searchByName(String name) {
+		List<Product>product=new ArrayList<>();
 					try {
 				connection();
 				String sql="Select*from product where name='" +name+"' ";
@@ -303,8 +303,8 @@ public class Product {
 					}
 					
 		}
-	public ArrayList<Product> searchByPrice( int price) {
-		ArrayList<Product>product=new ArrayList<>();
+	public List<Product> searchByPrice( int price) {
+		List<Product>product=new ArrayList<>();
 
 		try {
 			connection();
@@ -338,8 +338,8 @@ if(Customer.getFlagSearch()) {return product;		}
 
 		}
 
-	public ArrayList<Product> searchByCategory(String category) {
-		ArrayList<Product>product=new ArrayList<>();
+	public List<Product> searchByCategory(String category) {
+		List<Product>product=new ArrayList<>();
 
 		try {
 			connection();
@@ -375,8 +375,8 @@ if(Customer.getFlagSearch()) {return product;		}
 			return new ArrayList<>();
 			}
 	}
-	public ArrayList<Product> viewProduct(String category){
-   		ArrayList<Product>product=new ArrayList<>();
+	public List<Product> viewProduct(String category){
+   		List<Product>product=new ArrayList<>();
 
     	   try {
     		   connection();
