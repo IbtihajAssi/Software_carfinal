@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import car.Customer;
 import car.Product;
@@ -14,7 +15,7 @@ import io.cucumber.java.en.When;
 
 public class customerSearch {
 Product product;
-ArrayList<Product>p=new ArrayList<>();
+List<Product>p=new ArrayList<>();
 	@Given("customer login")
 	public void customerLogin() {
 		product=new Product();
@@ -33,7 +34,7 @@ ArrayList<Product>p=new ArrayList<>();
 
 	@Then("no product found message will display")
 	public void noProductFoundMessageWillDisplay() {
-//	    assertFalse(Customer.flag_search);
+
 		assertNull(p);
 	}
 
