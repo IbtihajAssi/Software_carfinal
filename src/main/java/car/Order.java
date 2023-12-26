@@ -96,7 +96,7 @@ public class Order {
  					        rs.getString("city"),
  					        rs.getString("street"),
  					        rs.getString("phoneNumber")));
- 			   }
+			   }
  			   else {
  				 flag=true;  
  			   }
